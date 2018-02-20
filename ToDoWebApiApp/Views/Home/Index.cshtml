@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ToDoWebApiApp.Models.TodoTask>
+
+@{
+	ViewData["Title"] = "List";
+	var
+		 themes = new string[] { " list-group-item-primary", " list-group-item-secondary",
+" list-group-item-success", " list-group-item-danger", " list-group-item-warning", " list-group-item-info",
+" list-group-item-light", " list-group-item-dark", ""
+		 };
+	int start = -1;
+}
+
+<h2>ToDo Task List</h2>
+
+<a asp-action="Create" class="btn btn-default">Create New</a>
+<ul class="list-group">
+	@foreach (var item in Model)
+	{
+		//var spacer = " | ";
+		if (++start >= themes.Length)
+		{
+			start = 0;
+		}
+		<li class="list-group-item list-group-item-action flex-column align-items-start@(themes[start])">
+			<div class="d-flex w-100 justify-content-between">
+				<h5 class="mb-1">@Html.DisplayFor(modelItem => item.Name)</h5>
+				<small>@Html.DisplayFor(modelItem => item.IsComplete) <span class="badge badge-primary badge-pill">@(item.Items?.Count ?? 0)</span></small>
+			</div>
+			<p class="mb-1"></p>
+			<small>
+				@if (!item.IsComplete)
+				{
+					<a asp-action="Edit" asp-route-id="@item.TodoTaskId" class="btn btn-default" >Edit</a>
+				}
+				<a asp-action="Details" asp-route-id="@item.TodoTaskId" class="btn btn-default" >Details</a>
+				<a asp-action="Delete" asp-route-id="@item.TodoTaskId" class="btn btn-default" >Delete</a>
+			</small>
+		</li>
+	}
+</ul>
+@section css {
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+}
+@section scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+}

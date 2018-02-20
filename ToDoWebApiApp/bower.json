@@ -1,0 +1,15 @@
+{
+  "name": "diogny.com",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "v4.0.0",
+    "jquery": "latest",
+    "jquery-validation": "latest",
+    "jquery-validation-unobtrusive": "latest",
+    "requirejs": "latest",
+    "font-awesome": "latest"
+  },
+  "resolutions": {
+    "bootstrap": "v4.0.0"
+  }
+}

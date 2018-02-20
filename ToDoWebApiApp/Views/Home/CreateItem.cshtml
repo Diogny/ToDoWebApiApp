@@ -1,0 +1,37 @@
+﻿@model ToDoWebApiApp.Models.TodoItem
+
+@{
+	ViewData["Title"] = "CreateItem";
+}
+<div class="page-header">
+	<h1>Create <small>ToDo Task Item</small></h1>
+</div>
+
+<div class="col-md-12">
+	<div class="alert alert-info">@Html.DisplayFor(model => model.TodoTask.Name)</div>
+	<form asp-action="CreateItem">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<input asp-for="TodoTask.TodoTaskId" type="hidden" name="TodoTaskId" value="@Model.TodoTask.TodoTaskId" />
+		</div>
+		<div class="form-group">
+			<label asp-for="Name" class="control-label"></label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Create" class="btn btn-default" />
+			<a asp-action="Index" class="btn btn-default">Cancel</a>
+			<a asp-action="Details" asp-route-id="@Model.TodoTask.TodoTaskId" class="btn btn-default">Back to Details</a>
+		</div>
+	</form>
+</div>
+
+@section css {
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+}
+@section Scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

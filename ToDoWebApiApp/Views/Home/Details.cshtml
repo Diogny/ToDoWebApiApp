@@ -1,0 +1,71 @@
+﻿@model ToDoWebApiApp.Models.TodoTask
+
+@{
+	ViewData["Title"] = "Details";
+	var
+	 themes = new string[] { " list-group-item-primary", " list-group-item-secondary",
+" list-group-item-success", " list-group-item-danger", " list-group-item-warning", " list-group-item-info",
+" list-group-item-light", " list-group-item-dark", ""
+	 };
+	int start = -1;
+	var count = @Model.Items?.Count ?? 0;
+}
+
+<div class="card" style="width: 100%;">
+	<div class="card-body">
+		<div class="row">
+			<div class="col col-lg-2">
+				<img class="card-img-top" src="~/images/details.png" style="width: 80px;" alt="Card image cap">
+			</div>
+			<div class="col-md-auto">
+				<h5 class="card-title">@Html.DisplayFor(model => model.Name)</h5>
+				<p class="card-text">Items <span class="badge badge-primary badge-pill">@count</span> Completed @Html.DisplayFor(model => model.IsComplete)</p>
+			</div>
+		</div>
+	</div>
+	<ul class="list-group list-group-flush">
+		@{
+			if (count > 0)
+			{
+				@foreach (var item in @Model.Items)
+				{
+					if (++start >= themes.Length)
+					{
+						start = 0;
+					}
+					<li class="list-group-item @(themes[start])">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">@Html.DisplayFor(modelItem => item.Name)</h5>
+							<small>@Html.DisplayFor(modelItem => item.IsComplete)</small>
+						</div>
+						<!--<p class="mb-1"></p>-->
+						@if (!item.IsComplete)
+						{
+							<small>
+								<a asp-action="EditItem" asp-route-id="@item.TotoItemId" asp-route-taskid="@Model.TodoTaskId" class="btn btn-default">Edit</a>
+								<a asp-action="Complete" asp-route-id="@Model.TodoTaskId" asp-route-itemid="@item.TotoItemId" class="btn btn-default">Complete</a>
+								<a asp-action="DeleteItem" asp-route-id="@item.TotoItemId" asp-route-taskid="@Model.TodoTaskId" class="btn btn-default">Delete</a>
+							</small>
+						}
+					</li>
+				}
+			}
+		}
+	</ul>
+	<div class="card-body">
+		@if (!Model.IsComplete)
+		{
+			<a asp-action="Edit" asp-route-id="@Model.TodoTaskId" class="card-link">Edit</a>
+		}
+		<a asp-action="CreateItem" asp-route-id="@Model.TodoTaskId" class="card-link">Create New Item</a>
+		<a asp-action="Index" class="card-link">Back to List</a>
+	</div>
+</div>
+
+@section css {
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+}
+@section scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+}

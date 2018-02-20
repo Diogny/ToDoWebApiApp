@@ -1,0 +1,76 @@
+﻿body {
+}
+/*
+.table {
+	width: 100%;
+	border: 1px solid #e8e7e7;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+	.table::after {
+		clear: both;
+	}
+
+.header {
+	background-color: #3cbf5e;
+	color: white;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+	.header > .row > .cell {
+		border-top: initial !important;
+		font-weight: bold;
+	}
+
+		.header > .row > .cell:first-child {
+			border-right: 1px solid gray;
+			width: 48.5%;
+		}
+
+.body {
+	clear: both;
+	overflow-y: auto;
+	margin-top: 10px;
+}
+
+.row {
+	width: 100%;
+	clear: both;
+}
+
+.body > .row :hover {
+	background-color: aliceblue;
+}
+
+.row::after {
+	clear: both;
+}
+
+.row > .cell {
+	display: inline;
+	float: left;
+	position: relative;
+	border-top: 1px solid #f5efef;
+	padding: 3px;
+	width: 49%;
+}
+
+.body > .row:first-child > .cell {
+	border-top: initial !important;
+}
+	*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.task-tag {
+	border: 1px solid gray;
+	padding: 5px;
+	display: inline-block;
+}

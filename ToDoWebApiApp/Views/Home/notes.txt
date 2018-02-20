@@ -1,0 +1,129 @@
+﻿
+https://neelbhatt.com/2018/01/07/database-first-in-net-core-2-0-step-by-step-angular-4-core-2-0-crud-operation-part-i/
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design
+
+LocalDb cannot connect to connection string database because it doesn't exists
+Run this to work:
+Add-Migration InitialCreate
+	To undo this action, use Remove-Migration.
+
+Update-Database
+
+Index.cshtml
+=====================================================
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.IsComplete)
+			</th>
+			<th>Items</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.IsComplete)
+				</td>
+				<td>
+					@(item.Items?.Count ?? 0)
+				</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.TodoTaskId">Edit</a> |
+					<a asp-action="Details" asp-route-id="@item.TodoTaskId">Details</a> |
+					<a asp-action="Delete" asp-route-id="@item.TodoTaskId">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+<hr />
+
+
+Details.cshtml
+=============================
+<div>
+	<h4>TodoTask</h4>
+	<div class="task-tag">
+		<a asp-action="CreateItem" asp-route-id="@Model.TodoTaskId">Create New Item</a>
+	</div>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.IsComplete)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.IsComplete)
+		</dd>
+	</dl>
+</div>
+
+var first = Model.Items.FirstOrDefault();
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => first.Name)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => first.IsComplete)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in @Model.Items)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.Name)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.IsComplete)
+						</td>
+						<td>
+							<a asp-action="Complete" asp-route-id="@Model.TodoTaskId" asp-route-itemid="@item.TotoItemId">Complete</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+
+Create.cshtml
+====================================
+			<div class="form-group">
+				<div class="checkbox">
+					<label>
+						<input asp-for="IsComplete" disabled="disabled" /> @Html.DisplayNameFor(model => model.IsComplete)
+					</label>
+				</div>
+			</div>
+
+CreateItem.cshtml
+===================================
+			<div class="form-group">
+				<div class="checkbox">
+					<label>
+						<input asp-for="IsComplete" disabled="disabled" /> @Html.DisplayNameFor(model => model.IsComplete)
+					</label>
+				</div>
+			</div>
