@@ -1,0 +1,66 @@
+﻿// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+	{
+		"outputFileName": "wwwroot/js/todo.min.js",
+		"inputFiles": [ "wwwroot/js/todo.js" ],
+		// Optionally specify minification options
+		"minify": {
+			"enabled": true,
+			"renameLocals": false
+		},
+		// Optionally generate .map file
+		"sourceMap": false
+	},
+	{
+		"outputFileName": "wwwroot/css/bootstrap.css",
+		"inputFiles": [ "../lib/bootstrap/dist/css/bootstrap.css" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/css/bootstrap.min.css",
+		"inputFiles": [ "../lib/bootstrap/dist/css/bootstrap.min.css" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/bootstrap.js",
+		"inputFiles": [ "../lib/bootstrap/dist/js/bootstrap.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/bootstrap.min.js",
+		"inputFiles": [ "../lib/bootstrap/dist/js/bootstrap.min.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/jquery.js",
+		"inputFiles": [ "../lib/jquery/dist/jquery.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/jquery.min.js",
+		"inputFiles": [ "../lib/jquery/dist/jquery.min.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/jquery.validate.js",
+		"inputFiles": [ "../lib/jquery-validation/dist/jquery.validate.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/jquery.validate.min.js",
+		"inputFiles": [ "../lib/jquery-validation/dist/jquery.validate.min.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/jquery.validate.unobtrusive.js",
+		"inputFiles": [ "../lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" ],
+		"minify": { "enabled": false }
+	},
+	{
+		"outputFileName": "wwwroot/js/jquery.validate.unobtrusive.min.js",
+		"inputFiles": [ "../lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js" ],
+		"minify": { "enabled": false }
+	}
+
+]
