@@ -1,5 +1,6 @@
 ﻿
 https://neelbhatt.com/2018/01/07/database-first-in-net-core-2-0-step-by-step-angular-4-core-2-0-crud-operation-part-i/
+https://docs.microsoft.com/en-us/ef/core/
 
 Install-Package Microsoft.EntityFrameworkCore.SqlServer
 Install-Package Microsoft.EntityFrameworkCore.Tools

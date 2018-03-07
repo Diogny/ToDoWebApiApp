@@ -29,7 +29,14 @@ namespace ToDoWebApiApp
 
 			//services.AddDbContext<TodoDbContext>(opt =>
 			//	opt.UseSqlServer(Configuration.GetConnectionString("ToDoDatabaseConnectionString")));
-			
+
+			/*
+			 options.UseSqlServer("")));
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<GkRTLSContext>()
+                .AddDefaultTokenProviders();
+			 */
 			services.AddMvc();
 		}
 
@@ -39,14 +46,23 @@ namespace ToDoWebApiApp
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+				app.UseBrowserLink();
 			}
+
+			if (env.IsProduction() || env.IsStaging())
+			{
+				app.UseExceptionHandler("/Error");
+			}
+
 			//https://docs.microsoft.com/en-us/aspnet/core/fundamentals/static-files?tabs=aspnetcore2x
 			app.UseStaticFiles();
-			app.UseMvc(routes =>
-			{
-				routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-			});
+
+			//app.UseMvc(routes =>
+			//{
+			//	routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+			//});
 			//app.UseMvc();
+			app.UseMvcWithDefaultRoute();
 			/*
 			 * //https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing
 			 * 

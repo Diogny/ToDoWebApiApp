@@ -33,7 +33,7 @@ namespace ToDoWebApiApp.Controllers
 			//return View(await ctx.TodoTasks.Include(t => t.Items).ToListAsync());
 			return View(await q.ToListAsync());
 		}
-
+		
 		async Task<TodoTask> getTask(int? id, bool loadItems = false)
 		{
 			return loadItems ?
